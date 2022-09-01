@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.bumptech.glide.Glide;
 import com.example.daftarku.R;
 import com.example.daftarku.model.Photo;
 import com.squareup.picasso.Picasso;
@@ -44,7 +43,7 @@ public class DaftarKuAdapter extends RecyclerView.Adapter<DaftarKuAdapter.Daftar
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull DaftarKuViewHolder holder, int position) {
-        holder.onBindData(daftarku.get(position),context);
+        holder.onBindData(daftarku.get(position));
     }
 
     @Override
@@ -62,7 +61,7 @@ public class DaftarKuAdapter extends RecyclerView.Adapter<DaftarKuAdapter.Daftar
 
         }
 
-        void onBindData(Photo photo, Context context) {
+        void onBindData(Photo photo) {
 
 //            Toast.makeText(context,photo.getThumbnailUrl(),Toast.LENGTH_SHORT).show();
 
@@ -92,6 +91,8 @@ public class DaftarKuAdapter extends RecyclerView.Adapter<DaftarKuAdapter.Daftar
             Picasso.get()
                     .load(photo.getThumbnailUrl())
                     .into(imageView);
+
+            imageView.setContentDescription(photo.getTitle());
 
         }
     }
